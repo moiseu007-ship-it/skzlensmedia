@@ -999,8 +999,8 @@ form.addEventListener('focusin',()=>{ if(!startedAt) startedAt = Date.now(); });
 });
 
 function deliver(payload){
-  if(!ENDPOINT) return Promise.resolve();   // demo mode: nothing leaves the browser
-  return fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); });
+  if(!ENDPOINT) return Promise.resolve();
+  return fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
 }
 
 form.addEventListener('submit', async e=>{
